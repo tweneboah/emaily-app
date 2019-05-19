@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import * as actions from '../actions' //taking all actions and assign to actions
 //ROUTES
 import Header from './Header'
+import Landing from './Landing'
+import SurveyNew from './Surveys/SurveyNew'
 
 
 const Dashboard = () => <h2>Dashboard</h2>
-const SurveyNew = () => <h2>ServeyNew</h2>
-const Landing = () => <h2>Landing</h2>
+
+
 
 
 class App extends React.Component {
@@ -27,7 +29,8 @@ class App extends React.Component {
           {/* //always visible */}
              <Header/>
              <Route exact path='/' component={Landing} />
-             <Route exact path='/surveys' component={SurveyNew} />
+             <Route exact path='/surveys' component={Dashboard} />
+             <Route exact path='/surveys/new' component={SurveyNew} />
         </div>
       </BrowserRouter>
 

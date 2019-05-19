@@ -1,12 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
-const passport = require('passport')
+const passport = require('passport');
+const bodyParser = require('body-parser')
 const app = express();
+//REQUIRING MODELS
 require('./models/user') 
+require('./models/Survey')
 require('./services/passport')
 
-const authRoutes  = require('./routes/authRoutes')
+//IMPORTING ROUTES
+const authRoutes  = require('./routes/authRoutes');
+const surveyRoute = require('./routes/surveyRoutes')
 const keys = require('./config/keys')
 
 
@@ -17,6 +22,10 @@ mongoose.connect(keys.mongoURL)
  
 //==============END OF DB==================
  
+
+//====body parser
+app.use(bodyParser.json())
+
 //===ENABLING COOKIES=======
 app.use(
     cookieSession({
@@ -35,6 +44,7 @@ app.use(passport.session());
 //============ROUTES============
 //Calling authRoutes
 authRoutes(app)
+surveyRoute(app)
 //=======END OF ROUTES============
 
 

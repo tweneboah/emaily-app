@@ -18,11 +18,11 @@ module.exports = (app) => {
                  passport.authenticate('google'),
                  (req, res) => {
                          res.redirect('/surveys')
-                 }
+                   }
                  );
 
         //LOGOUT
-        app.get('/logout', (req, res) => {
+        app.get('/api/logout', (req, res) => {
                
                 req.logout()
                 res.redirect('http://localhost:3000')

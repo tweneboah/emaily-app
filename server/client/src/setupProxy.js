@@ -4,5 +4,9 @@ module.exports = function(app) {
     app.use(proxy(['/api', '/auth/google'], { target: 'http://localhost:5000' }));
 
 
-    app.use(proxy(['/*'], { target: 'http://localhost:5000' }));
+    app.use(proxy(['/api', '/logout'], { target: 'http://localhost:5000' }));
+
+
+
+    
 }
